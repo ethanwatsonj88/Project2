@@ -16,11 +16,17 @@
         <div class="col-8">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Discover</a>
             </li>
+						<li class="nav-item">
+							<a class="nav-link" href="/songs">Songs</a>
+						</li>
+						<li class="users">
+							<a class="nav-link" href="/users">Users</a>
+						</li>
           </ul>
         </div>
       </nav>
