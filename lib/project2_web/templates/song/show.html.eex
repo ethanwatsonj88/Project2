@@ -5,6 +5,7 @@
   <li>
     <strong>Name:</strong>
     <%= @song.name %>
+		<%= @song.user_id %>
   </li>
 
 </ul>

@@ -6,6 +6,8 @@ defmodule Project2.Users.User do
     field :admin, :boolean, default: false
     field :email, :string
     field :username, :string
+		
+		has_many :songs, Project2.Songs.Song
 
     timestamps()
   end
