@@ -4,6 +4,7 @@ defmodule Project2.Songs.Song do
 
   schema "songs" do
     field :name, :string
+		field :link, :string
 		
 		belongs_to :user, Project2.Users.User
 

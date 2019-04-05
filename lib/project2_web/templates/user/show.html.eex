@@ -2,6 +2,11 @@
 
 <ul>
 
+	<li>
+		<strong>Id:</strong>
+		<%= @user.id %>
+	</li>
+
   <li>
     <strong>Email:</strong>
     <%= @user.email %>

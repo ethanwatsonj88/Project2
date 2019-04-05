@@ -16,3 +16,5 @@ Repo.insert!(%User{email: "ethan@gmail.com", admin: true})
 Repo.insert!(%User{email: "justin@gmail.com", admin: true})
 Repo.insert!(%User{email: "nat@gmail.com", admin: false})
 
+alias Project2.Songs.Song
+Repo.insert!(%Song{name: "sorry by justin beeber", user_id: 1, link: "https://www.youtube.com/watch?v=rBistsB7pNU"})

@@ -5,7 +5,14 @@
   <li>
     <strong>Name:</strong>
     <%= @song.name %>
+	</li>
+	<li>
+		<strong>User Id:</strong>
 		<%= @song.user_id %>
+	</li>
+	<li>
+		<strong>Link:</strong>
+		<%= link @song.link, to: @song.link %>
   </li>
 
 </ul>
