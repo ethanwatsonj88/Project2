@@ -7,6 +7,7 @@ defmodule Project2.Users do
   alias Project2.Repo
 
   alias Project2.Users.User
+	alias Project2.Songs.Song
 
   @doc """
   Returns the list of users.
@@ -37,10 +38,23 @@ defmodule Project2.Users do
   """
   def get_user!(id), do: Repo.get!(User, id)
 
-	def get_user(id), do: Repo.get(User, id)
+	def get_user(id) do 
+		Repo.one from u in User,
+			where: u.id == ^id,
+			preload: [songs: :user]
+	end
 
 	def get_user_by_email(email) do
 		Repo.get_by(User, email: email)
+	end
+
+
+	## Gets all songs that are made by a user
+	def list_songs(id) do
+		#User
+		#|> Repo.get(id)
+		#|> Repo.preload(:songs)	
+		Repo.get(User, id)
 	end
 
   @doc """

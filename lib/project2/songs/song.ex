@@ -14,7 +14,7 @@ defmodule Project2.Songs.Song do
   @doc false
   def changeset(song, attrs) do
     song
-    |> cast(attrs, [:name, :user_id])
-    |> validate_required([:name, :user_id])
+    |> cast(attrs, [:name, :user_id, :link])
+    |> validate_required([:name, :user_id, :link])
   end
 end
