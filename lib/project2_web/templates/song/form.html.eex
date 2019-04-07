@@ -1,4 +1,4 @@
-<%= form_for @changeset, @action, fn f -> %>
+<%= form_for @changeset, @action, [multipart: true], fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
       <p>Oops, something went wrong! Please check the errors below.</p>
@@ -6,19 +6,16 @@
   <% end %>
 
 	<%= hidden_input f, :user_id, value: @current_user.id %>
-		
+
 
 	<div class="form-group">
   	<%= label f, :name %>
   	<%= text_input f, :name, class: "form-control" %>
   	<%= error_tag f, :name %>
 	</div>
-		
-	<div class="form-group">
-		<%= label f, :link %>
-		<%= text_input f, :link, class: "form-control" %>
-		<%= error_tag f, :link %>
-	</div>
+
+  <%= label f, :Music %>
+  <%= file_input f, :music %>
 
   <div>
     <%= submit "Save", class: "btn-primary"  %>

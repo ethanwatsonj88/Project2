@@ -15,6 +15,19 @@ defmodule Project2Web.SongController do
   end
 
   def create(conn, %{"song" => song_params}) do
+    song_params = if song_params != nil && Map.has_key?(song_params, "music") do
+                 client = get_session(conn, :client)
+                 {:ok, fun} = File.read(song_params["music"].path)
+                 encoded = Base.encode64(fun)
+                 data = OAuth2.Client.post!(client,
+                        "https://www.googleapis.com/upload/drive/v3/files?uploadType=media",
+                        encoded).body
+                 IO.inspect data
+                 Map.put(song_params, "link", data["id"])
+                 |> Map.delete("music")
+                 else
+                   song_params
+                 end
     case Songs.create_song(song_params) do
       {:ok, song} ->
         conn
@@ -53,8 +66,13 @@ defmodule Project2Web.SongController do
 
   def delete(conn, %{"id" => id}) do
     song = Songs.get_song!(id)
-    {:ok, _song} = Songs.delete_song(song)
 
+    client = get_session(conn, :client)
+    data = OAuth2.Client.delete!(client,
+           "https://www.googleapis.com/drive/v3/files/" <> song.link).body
+
+    IO.inspect song
+    {:ok, _song} = Songs.delete_song(song)
     conn
     |> put_flash(:info, "Song deleted successfully.")
     |> redirect(to: Routes.song_path(conn, :index))

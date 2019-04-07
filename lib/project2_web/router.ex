@@ -36,4 +36,9 @@ defmodule Project2Web.Router do
     get "/callback", AuthController, :callback
   end
 
+  scope "/audio", Project2Web do
+    pipe_through :browser
+    get "/song", Audio, :song
+  end
+
 end
