@@ -54,6 +54,8 @@ defmodule Project2.Follows do
 
   """
   def create_follow(attrs \\ %{}) do
+		IO.puts "AAAAAAAAAAAAAA"
+
     %Follow{}
     |> Follow.changeset(attrs)
     |> Repo.insert()

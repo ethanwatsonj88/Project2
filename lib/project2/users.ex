@@ -21,6 +21,7 @@ defmodule Project2.Users do
   """
   def list_users do
     Repo.all(User)
+		|> Repo.preload(:follows)
   end
 
   @doc """

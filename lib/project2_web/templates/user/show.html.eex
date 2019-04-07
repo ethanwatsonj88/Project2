@@ -1,6 +1,16 @@
 <h1>This is <%= @user.username %>'s page.</h1>
 
-<a href="/follows/new">Follow <%= @user.username %></a>
+<%# form_for @conn, Routes.follow_path(@conn, :create), [as: :follow], fn f -> %>
+	<%# text_input f, :follower_id, value: @current_user.id %>
+	<%# text_input f, :following_id, value: @user.id %>
+  <%# submit "Follow" %>
+<%# end %>
+<%# link "Follow", to: Routes.follow_path(@conn, :create) %>
+<%# link "dont", to: Routes.follow_path(@conn, :new) %>
+
+ 	<%= render "hiddenform.html", Map.put(assigns, :action, Routes.follow_path(@conn, :create)) %>
+
+
 
 <ul>
 

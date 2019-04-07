@@ -15,7 +15,6 @@
     <tr>
 
 			<td><%= inspect follow %></td>
-			
 
       <td>
         <%= link "Show", to: Routes.follow_path(@conn, :show, follow) %>
