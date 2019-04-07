@@ -30,4 +30,10 @@ defmodule Project2Web.Router do
   #   pipe_through :api
   # end
 
+  scope "/auth", Project2Web do
+    pipe_through :browser
+    get "/", AuthController, :index
+    get "/callback", AuthController, :callback
+  end
+
 end

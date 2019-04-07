@@ -26,11 +26,9 @@
    	      	<%= link "Edit", to: Routes.user_path(@conn, :edit, user),
   							class: "btn btn-info" %>
   				<% end %>
-  				<%= if @current_user.admin do %>
-  	        <%= link "Delete", to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"],
-  							class: "btn btn-danger" %>
-  				<% end %>
         <% end %>
+  	    <%= link "Delete", to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"],
+  					class: "btn btn-danger" %>
       </td>
     </tr>
 <% end %>
