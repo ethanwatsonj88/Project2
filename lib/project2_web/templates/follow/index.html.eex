@@ -1,0 +1,30 @@
+<h1>Listing Follows</h1>
+
+<table>
+  <thead>
+    <tr>
+
+			<th>Follower id</th>
+			<th>Following id</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for follow <- @follows do %>
+    <tr>
+
+			<td><%= inspect follow %></td>
+			
+
+      <td>
+        <%= link "Show", to: Routes.follow_path(@conn, :show, follow) %>
+        <%= link "Edit", to: Routes.follow_path(@conn, :edit, follow) %>
+        <%= link "Delete", to: Routes.follow_path(@conn, :delete, follow), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Follow", to: Routes.follow_path(@conn, :new) %></span>

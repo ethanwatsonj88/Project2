@@ -20,6 +20,7 @@ defmodule Project2Web.Router do
     get "/", PageController, :index
 		resources "/songs", SongController
 		resources "/users", UserController
+		resources "/follows", FollowController
 
 		resources "/session", SessionController, only: [:create, :delete], singleton: true
   end

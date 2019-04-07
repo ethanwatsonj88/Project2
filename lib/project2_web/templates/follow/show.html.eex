@@ -1,0 +1,8 @@
+<h1>Show Follow</h1>
+
+<ul>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.follow_path(@conn, :edit, @follow) %></span>
+<span><%= link "Back", to: Routes.follow_path(@conn, :index) %></span>

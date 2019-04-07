@@ -9,7 +9,10 @@ defmodule Project2.Users.User do
 		
 		has_many :songs, Project2.Songs.Song
 
-		has_many :followers, Project2.Users.User
+		has_many :follows, Project2.Follows.Follow
+
+##		many_to_many :follows, Project2.Users.User, join_through: "follows"
+		
 
     timestamps()
   end

@@ -8,6 +8,7 @@ defmodule Project2.Users do
 
   alias Project2.Users.User
 	alias Project2.Songs.Song
+	alias Project2.Follows.Follow
 
   @doc """
   Returns the list of users.
@@ -36,7 +37,25 @@ defmodule Project2.Users do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user!(id) do
+		##query = from f in Follow,
+		##	where: f.follower_id == ^id,
+		##	select: f,
+		##	preload: [follows: :follower]
+		User
+		##|> Repo.get!(User, id)
+		|> Repo.get(id)
+		|> Repo.preload(:songs)
+	end
+	
+	def get_followers(id) do
+		query = from f in Follow,
+			where: f.following_id == ^id,
+			select: f
+		Repo.all(query)
+		|> Repo.preload(:follower)
+		|> Repo.preload(:following)
+	end
 
 	def get_user(id) do 
 		Repo.one from u in User,

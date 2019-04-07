@@ -29,7 +29,8 @@ defmodule Project2Web.UserController do
 
   def show(conn, %{"id" => id}) do
     user = Users.get_user!(id)
-    render(conn, "show.html", user: user)
+		followers = Users.get_followers(id)
+    render(conn, "show.html", user: user, followers: followers)
   end
 
   def edit(conn, %{"id" => id}) do
