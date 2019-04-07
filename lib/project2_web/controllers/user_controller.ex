@@ -5,6 +5,7 @@ defmodule Project2Web.UserController do
   alias Project2.Users.User
 	alias Project2.Follows
 	alias Project2.Follows.Follow
+  alias Project2.Repo
 
 
   def index(conn, _params) do
@@ -33,6 +34,7 @@ defmodule Project2Web.UserController do
 
   def show(conn, %{"id" => id}) do
     user = Users.get_user!(id)
+    |> Repo.preload(:follows)
 		followers = Users.get_followers(id)
 		changeset = Follows.change_follow(%Follow{})
     render(conn, "show.html", user: user, followers: followers, changeset: changeset)
@@ -42,12 +44,14 @@ defmodule Project2Web.UserController do
 
   def edit(conn, %{"id" => id}) do
     user = Users.get_user!(id)
+    |> Repo.preload(:follows)
     changeset = Users.change_user(user)
     render(conn, "edit.html", user: user, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do
     user = Users.get_user!(id)
+    |> Repo.preload(:follows)
 
     case Users.update_user(user, user_params) do
       {:ok, user} ->
