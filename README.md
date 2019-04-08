@@ -1,5 +1,7 @@
 # Project2
 
+Because of complications with the google drive api, you can only listen to songs that you personally upload. (This was listed in our report, but putting this here too just in case.)
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
