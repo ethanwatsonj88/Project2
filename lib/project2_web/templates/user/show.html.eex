@@ -37,7 +37,7 @@
 </ul>
 
 <%= render Project2Web.SongView, "index.html",
-			songs: @current_user.songs,
+			songs: @user.songs,
 			conn: @conn %>
 
 <%= for user <- @followers do %>
