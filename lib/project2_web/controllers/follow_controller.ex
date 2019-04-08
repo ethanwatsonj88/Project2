@@ -4,6 +4,7 @@ defmodule Project2Web.FollowController do
   alias Project2.Follows
   alias Project2.Follows.Follow
   alias Project2.Repo
+  alias Project2.Users
 
   def index(conn, _params) do
     follows = Follows.list_follows()
@@ -23,7 +24,17 @@ defmodule Project2Web.FollowController do
         |> redirect(to: Routes.follow_path(conn, :show, follow))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        IO.inspect follow_params
+        user = Users.get_user!(String.to_integer(follow_params["following_id"]))
+        |> Repo.preload(:follows)
+
+    		changeset = Follows.change_follow(%Follow{})
+        conn
+        |> put_flash(:error, "Follow failed. Are you already followed?")
+        |> render(Project2Web.UserView, "show.html", user: user,
+               followers: Users.get_followers(user.id),
+               followings: Users.get_followings(user.id),
+               changeset: changeset)
     end
   end
 
