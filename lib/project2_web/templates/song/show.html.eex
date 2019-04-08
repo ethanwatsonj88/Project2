@@ -13,5 +13,4 @@
 
 </ul>
 
-<span><%= link "Edit", to: Routes.song_path(@conn, :edit, @song) %></span>
 <span><%= link "Back", to: Routes.song_path(@conn, :index) %></span>
