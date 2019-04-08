@@ -21,8 +21,12 @@
       <td>
         <%= link "Show", to: Routes.user_path(@conn, :show, user),
 						class: "btn btn-secondary" %>
-  	    <%= link "Delete", to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"],
-  					class: "btn btn-danger" %>
+        <%= if @current_user do %>
+          <%= if @current_user.id == user.id do %>
+  	           <%= link "Delete", to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"],
+  				    class: "btn btn-danger" %>
+          <% end %>
+        <% end %>
       </td>
     </tr>
 <% end %>

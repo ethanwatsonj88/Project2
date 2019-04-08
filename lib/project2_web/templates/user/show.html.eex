@@ -55,7 +55,7 @@
 <%= for user <- @followings do %>
 	<ul class="list-group">
 		<li class="list-group-item">
-			<%= user.follower.username %>
+			<%= user.following.username %>
 		</li>
 	</ul>
 <% end %>
