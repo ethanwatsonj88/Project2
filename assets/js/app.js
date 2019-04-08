@@ -12,9 +12,17 @@ import css from "../css/app.scss";
 import "phoenix_html"
 import jQuery from 'jquery';
 window.jQuery = window.$ = jQuery;
-import "bootstrap";
+import index_init from "./index"
 
 // Import local files
 //
 // Local files can be imported directly using relative paths, for example:
-// import socket from "./socket"
+import socket from "./socket"
+
+$(() => {
+  let root = document.getElementById('root');
+  if (root) {
+    let channel = socket.channel("listeners:" + "hi", {})
+    index_init(root, channel);
+  }
+});

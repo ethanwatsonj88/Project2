@@ -30,4 +30,6 @@ defmodule Project2Web.UserSocket do
   #
   # Returning `nil` makes this socket anonymous.
   def id(_socket), do: nil
+
+  channel "listeners:*", Project2Web.ListenersChannel
 end

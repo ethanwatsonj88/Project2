@@ -1,12 +1,12 @@
 <div class="row">
-	<div class="col-12">
-		<h1>Welcome to ProdHelp</h1>
-	</div>
-	<div class="col-12">
-  	<%= if @current_user do %>
-    	<h1><%= @current_user.username %></h1>
-    <% else %>
-    	<a href="/auth"><h2>Sign In with Google</h2></a>
-    <% end %>
-	</div>
+  <div class="column">
+    <div id="root">
+      React component loading...
+    </div>
+  </div>
 </div>
+<script>
+  <%= if @current_user do %>
+	  window.username = "<%= @current_user.username %>"
+	<% end %>
+</script>
