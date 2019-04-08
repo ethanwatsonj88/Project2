@@ -28,5 +28,7 @@
   </tbody>
 </table>
 
-<span><%= link "New Song", to: Routes.song_path(@conn, :new),
-					class: 'btn btn-success' %></span>
+<%= if @current_user do %>
+  <span><%= link "New Song", to: Routes.song_path(@conn, :new),
+	  				class: 'btn btn-success' %></span>
+<% end %>
