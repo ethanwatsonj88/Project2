@@ -22,6 +22,11 @@ defmodule Project2Web.SongController do
                  data = OAuth2.Client.post!(client,
                         "https://www.googleapis.com/upload/drive/v3/files?uploadType=media",
                         encoded).body
+                 OAuth2.Client.post!(
+                        OAuth2.Client.put_header(client, "Content-Type", "application/json"),
+                        "https://www.googleapis.com/drive/v3/files/" <>
+                        data["id"] <> "/permissions",
+                        %{type: "anyone", role: "reader"}).body
                  IO.inspect data
                  Map.put(song_params, "link", data["id"])
                  |> Map.delete("music")

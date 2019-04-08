@@ -8,8 +8,9 @@
 <%# link "Follow", to: Routes.follow_path(@conn, :create) %>
 <%# link "dont", to: Routes.follow_path(@conn, :new) %>
 
+<%= if @current_user do %>
  	<%= render "hiddenform.html", Map.put(assigns, :action, Routes.follow_path(@conn, :create)) %>
-
+<% end %>
 
 
 <ul>
