@@ -4,6 +4,8 @@ export MIX_ENV=prod
 export PORT=4797
 export HOME=/home/project2/project2
 
+source .google.env
+
 echo "Stopping old copy of app, if any..."
 
 /home/project2/project2/_build/prod/rel/project2/bin/project2 stop || true

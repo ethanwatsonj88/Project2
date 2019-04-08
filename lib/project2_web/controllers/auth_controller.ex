@@ -17,7 +17,9 @@ defmodule Project2Web.AuthController do
     email_addr = data["user"]["emailAddress"]
 
     user = Users.get_user_by_email(email_addr)
-    if user do
+		IO.puts "\n\n\n\nDISPLAY USER\n\n\n\n"
+    inspect user
+    user = if user do
       user
     else
       changeset = User.changeset(%User{},
@@ -27,7 +29,7 @@ defmodule Project2Web.AuthController do
           username: user_name,
           email: email_addr
         })
-    user = Repo.insert!(changeset)
+    Repo.insert!(changeset)
     end
 
     conn
