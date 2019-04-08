@@ -1,8 +1,7 @@
 <h1>Show Song</h1>
 
-<ul>
-
-  <li>
+<ul class="list-group">
+  <li class="list-group-item">
     <strong>Name:</strong>
     <%= @song.name %>
 	</li>
