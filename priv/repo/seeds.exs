@@ -12,13 +12,13 @@
 alias Project2.Repo
 alias Project2.Users.User
 
-Repo.insert!(%User{email: "ethan@gmail.com", username: "ethanwatsonj88", admin: true})
-Repo.insert!(%User{email: "justin@gmail.com", username: "xiaju", admin: true})
-Repo.insert!(%User{email: "nat@gmail.com", username: "nattheteacher", admin: false})
+#Repo.insert!(%User{email: "ethan@gmail.com", username: "ethanwatsonj88", admin: true})
+#Repo.insert!(%User{email: "justin@gmail.com", username: "xiaju", admin: true})
+#Repo.insert!(%User{email: "nat@gmail.com", username: "nattheteacher", admin: false})
 
-alias Project2.Songs.Song
-Repo.insert!(%Song{name: "sorry by justin beeber", user_id: 1, link: "https://www.youtube.com/watch?v=rBistsB7pNU"})
+#alias Project2.Songs.Song
+#Repo.insert!(%Song{name: "sorry by justin beeber", user_id: 1, link: ""})
 
-alias Project2.Follows.Follow
-Repo.insert!(%Follow{follower_id: 1, following_id: 2})
-Repo.insert!(%Follow{follower_id: 3, following_id: 2}) 
+#alias Project2.Follows.Follow
+#Repo.insert!(%Follow{follower_id: 1, following_id: 2})
+#Repo.insert!(%Follow{follower_id: 3, following_id: 2}) 

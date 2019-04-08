@@ -18,7 +18,6 @@ defmodule Project2Web.SongController do
     song_params = if song_params != nil && Map.has_key?(song_params, "music") do
                  client = get_session(conn, :client)
                  {:ok, fun} = File.read(song_params["music"].path)
-                 #encoded = Base.encode64(fun)
                  data = OAuth2.Client.post!(
                         OAuth2.Client.put_header(client, "Content-Type", "audio/mpeg"),
                         "https://www.googleapis.com/upload/drive/v3/files?uploadType=media",
@@ -27,13 +26,17 @@ defmodule Project2Web.SongController do
                         OAuth2.Client.put_header(client, "Content-Type", "application/json"),
                         "https://www.googleapis.com/drive/v3/files/" <> data["id"],
                         %{name: song_params["name"]})
-                 perm = OAuth2.Client.post!(
+                 OAuth2.Client.post!(
                         OAuth2.Client.put_header(client, "Content-Type", "application/json"),
                         "https://www.googleapis.com/drive/v3/files/" <>
                         data["id"] <> "/permissions",
                         %{type: "anyone", role: "reader"}).body
-                 IO.inspect perm
+                 webLink = OAuth2.Client.get!(client,
+                        "https://www.googleapis.com/drive/v3/files/"
+                        <> data["id"] <> "?fields=webContentLink").body
+                 IO.inspect webLink
                  Map.put(song_params, "link", data["id"])
+                 |> Map.put("webLink", webLink["webContentLink"])
                  |> Map.delete("music")
                  else
                    song_params

@@ -5,7 +5,8 @@ defmodule Project2.Songs.Song do
   schema "songs" do
     field :name, :string
 		field :link, :string
-		
+    field :webLink, :string
+
 		belongs_to :user, Project2.Users.User
 
     timestamps()
@@ -14,7 +15,7 @@ defmodule Project2.Songs.Song do
   @doc false
   def changeset(song, attrs) do
     song
-    |> cast(attrs, [:name, :user_id, :link])
-    |> validate_required([:name, :user_id, :link])
+    |> cast(attrs, [:name, :user_id, :link, :webLink])
+    |> validate_required([:name, :user_id, :link, :webLink])
   end
 end

@@ -14,17 +14,19 @@
       <td><%= song.name %></td>
 			<td><%= song.user_id %></td>
       <td>
-        <%= link "Show", to: Routes.song_path(@conn, :show, song), 
+        <%= link "Show", to: Routes.song_path(@conn, :show, song),
 						class: "btn btn-secondary" %>
-        <%= link "Edit", to: Routes.song_path(@conn, :edit, song),
-						class: "btn btn-info" %>
-        <%= link "Delete", to: Routes.song_path(@conn, :delete, song), method: :delete, data: [confirm: "Are you sure?"],
-						class: "btn btn-danger"%>
+        <%= if @current_user do %>
+          <%= if (@current_user.id == song.user_id) do %>
+            <%= link "Delete", to: Routes.song_path(@conn, :delete, song), method: :delete, data: [confirm: "Are you sure?"],
+					  	class: "btn btn-danger"%>
+          <% end %>
+        <% end %>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link "New Song", to: Routes.song_path(@conn, :new), 
+<span><%= link "New Song", to: Routes.song_path(@conn, :new),
 					class: 'btn btn-success' %></span>
