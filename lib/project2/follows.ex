@@ -20,6 +20,7 @@ defmodule Project2.Follows do
   def list_follows do
     Repo.all(Follow)
 		|> Repo.preload(:follower)
+		|> Repo.preload(:following)
   end
 
   @doc """

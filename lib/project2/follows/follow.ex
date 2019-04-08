@@ -16,7 +16,7 @@ defmodule Project2.Follows.Follow do
   @doc false
   def changeset(follow, attrs) do
     follow
-    |> cast(attrs, [])
-    |> validate_required([])
+    |> cast(attrs, [:follower_id, :following_id])
+    |> validate_required([:follower_id, :following_id])
   end
 end

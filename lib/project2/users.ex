@@ -57,6 +57,16 @@ defmodule Project2.Users do
 		|> Repo.preload(:follower)
 		|> Repo.preload(:following)
 	end
+	
+	def get_followings(id) do
+		query = from f in Follow,
+			where: f.follower_id == ^id,
+			select: f
+		Repo.all(query)
+		|> Repo.preload(:follower)
+		|> Repo.preload(:following)
+	end
+
 
 	def get_user(id) do 
 		Repo.one from u in User,

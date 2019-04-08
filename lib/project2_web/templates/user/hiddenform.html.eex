@@ -4,20 +4,17 @@
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
-	
 	<div class="form-group">
-	  <%= label f, :follower_id %>
- 		<%= text_input f, :follower_id, class: "form-control" %>
+ 		<%= text_input f, :follower_id, class: "form-control", value: @current_user.id, hidden: true %>
   	<%= error_tag f, :follower_id %>
 	</div>
 
 	<div class="form-group">
-	  <%= label f, :following_id %>
- 		<%= text_input f, :following_id, class: "form-control" %>
+ 		<%= text_input f, :following_id, class: "form-control", value: @user.id, hidden: true %>
   	<%= error_tag f, :following_id %>
 	</div>
 
   <div>
-    <%= submit "Save" %>
+    <%= submit "Follow", class: "btn btn-primary" %>
   </div>
 <% end %>

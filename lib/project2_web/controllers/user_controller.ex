@@ -36,8 +36,9 @@ defmodule Project2Web.UserController do
     user = Users.get_user!(id)
     |> Repo.preload(:follows)
 		followers = Users.get_followers(id)
+		followings = Users.get_followings(id)
 		changeset = Follows.change_follow(%Follow{})
-    render(conn, "show.html", user: user, followers: followers, changeset: changeset)
+    render(conn, "show.html", user: user, followers: followers, followings: followings, changeset: changeset)
   end
 
 	alias Project2.Repo

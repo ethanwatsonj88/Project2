@@ -1,6 +1,11 @@
 <h1>Show Follow</h1>
 
 <ul>
+	<li>
+  	<strong>Id:</strong>
+    <%= @follow.id %>
+		
+	</li>
 
 </ul>
 

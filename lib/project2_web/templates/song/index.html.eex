@@ -27,4 +27,4 @@
 </table>
 
 <span><%= link "New Song", to: Routes.song_path(@conn, :new), 
-					class: 'btn btn-primary' %></span>
+					class: 'btn btn-success' %></span>
