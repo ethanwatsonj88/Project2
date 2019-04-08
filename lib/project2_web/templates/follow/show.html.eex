@@ -1,13 +1,2 @@
-<h1>Show Follow</h1>
-
-<ul>
-	<li>
-  	<strong>Id:</strong>
-    <%= @follow.id %>
-		
-	</li>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.follow_path(@conn, :edit, @follow) %></span>
-<span><%= link "Back", to: Routes.follow_path(@conn, :index) %></span>
+<h3><%= @follow.follower.username %> now follows
+<%= @follow.following.username %>!</h3>

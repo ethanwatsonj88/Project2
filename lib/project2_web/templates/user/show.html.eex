@@ -13,24 +13,23 @@
 <% end %>
 
 
-<ul>
-
-	<li>
-		<strong>Id (use this for reference and tagging):</strong>
+<ul class="list-group">
+	<li class="list-group-item">
+		<strong>Id:</strong>
 		<%= @user.id %>
 	</li>
 
-  <li>
+  <li class="list-group-item">
     <strong>Email:</strong>
     <%= @user.email %>
   </li>
 
-  <li>
+  <li class="list-group-item">
     <strong>Username:</strong>
     <%= @user.username %>
   </li>
 
-  <li>
+  <li class="list-group-item">
     <strong>Admin:</strong>
     <%= @user.admin %>
   </li>
@@ -38,31 +37,24 @@
 </ul>
 
 <%= render Project2Web.SongView, "index.html",
-			songs: @user.songs,
-			current_user: @current_user,
-			conn: @conn %>
+		songs: @user.songs,
+		current_user: @current_user,
+		conn: @conn %>
 
+<br />
+<strong>Followers</strong>
 <%= for user <- @followers do %>
-	<div>Followers</div>
-	<ul>
-		<li>
-			User id
-			<%= user.id %>
-			<br>
-			Username
+	<ul class="list-group">
+		<li class="list-group-item">
 			<%= user.follower.username %>
 		</li>
 	</ul>
 <% end %>
 
+<strong>Following</strong>
 <%= for user <- @followings do %>
-	<div>Following</div>
-	<ul>
-		<li>
-			User id
-			<%= user.id %>
-			<br>
-			Username
+	<ul class="list-group">
+		<li class="list-group-item">
 			<%= user.follower.username %>
 		</li>
 	</ul>

@@ -3,6 +3,7 @@ defmodule Project2Web.FollowController do
 
   alias Project2.Follows
   alias Project2.Follows.Follow
+  alias Project2.Repo
 
   def index(conn, _params) do
     follows = Follows.list_follows()
@@ -28,6 +29,8 @@ defmodule Project2Web.FollowController do
 
   def show(conn, %{"id" => id}) do
     follow = Follows.get_follow!(id)
+    |> Repo.preload(:follower)
+    |> Repo.preload(:following)
     render(conn, "show.html", follow: follow)
   end
 
