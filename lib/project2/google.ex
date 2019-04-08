@@ -4,6 +4,7 @@ defmodule Google do
   Based on the OAuth2 strategy for GitHub by Sonny Scroggin
   in https://github.com/scrogson/oauth2_example
   """
+  # Attribution: http://wsmoak.net/tag/fitbit.html
   use OAuth2.Strategy
   alias OAuth2.Strategy.AuthCode
 
