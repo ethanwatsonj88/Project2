@@ -18,10 +18,11 @@ defmodule Project2Web.SongController do
     song_params = if song_params != nil && Map.has_key?(song_params, "music") do
                  client = get_session(conn, :client)
                  {:ok, fun} = File.read(song_params["music"].path)
-                 encoded = Base.encode64(fun)
-                 data = OAuth2.Client.post!(client,
+                 #encoded = Base.encode64(fun)
+                 data = OAuth2.Client.post!(
+                        OAuth2.Client.put_header(client, "Content-Type", "audio/mpeg"),
                         "https://www.googleapis.com/upload/drive/v3/files?uploadType=media",
-                        encoded).body
+                        fun).body
                  OAuth2.Client.post!(
                         OAuth2.Client.put_header(client, "Content-Type", "application/json"),
                         "https://www.googleapis.com/drive/v3/files/" <>

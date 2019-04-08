@@ -9,21 +9,21 @@ defmodule Project2Web.Audio do
   def song(conn, %{"id" => id}) do
     song = Songs.get_song!(id)
     client = get_session(conn, :client)
-    data = OAuth2.Client.get!(client,
+    x = OAuth2.Client.get!(client,
            "https://www.googleapis.com/drive/v3/files/"
            <> song.link <> "?alt=media").body
-    data = data
-      |> String.to_charlist()
-      |> tl()
-      |> Enum.reverse()
-      |> tl()
-      |> Enum.reverse()
-      |> to_string()
+#    data = data
+#      |> String.to_charlist()
+#      |> tl()
+#      |> Enum.reverse()
+#      |> tl()
+#      |> Enum.reverse()
+#      |> to_string()
     #IO.inspect(data, printable_limit: :infinity)
-    {:ok, x} = Base.decode64(data)
-		IO.puts "\n\n\n\n\n\n\ AAAAAAAaa\n\n\n\n\n"
+    #{:ok, x} = Base.decode64(data)
+#		IO.puts "\n\n\n\n\n\n\ AAAAAAAaa\n\n\n\n\n"
 		inspect File.open("priv/static/song.mp3", [:write])
-		IO.puts "AAAAAFDFFFFF"
+#		IO.puts "AAAAAFDFFFFF"
     {:ok, file} = File.open("song.mp3", [:write])
     IO.binwrite(file, x)
     IO.inspect(x)
