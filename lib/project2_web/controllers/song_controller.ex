@@ -23,12 +23,16 @@ defmodule Project2Web.SongController do
                         OAuth2.Client.put_header(client, "Content-Type", "audio/mpeg"),
                         "https://www.googleapis.com/upload/drive/v3/files?uploadType=media",
                         fun).body
-                 OAuth2.Client.post!(
+                 OAuth2.Client.patch!(
+                        OAuth2.Client.put_header(client, "Content-Type", "application/json"),
+                        "https://www.googleapis.com/drive/v3/files/" <> data["id"],
+                        %{name: song_params["name"]})
+                 perm = OAuth2.Client.post!(
                         OAuth2.Client.put_header(client, "Content-Type", "application/json"),
                         "https://www.googleapis.com/drive/v3/files/" <>
                         data["id"] <> "/permissions",
                         %{type: "anyone", role: "reader"}).body
-                 IO.inspect data
+                 IO.inspect perm
                  Map.put(song_params, "link", data["id"])
                  |> Map.delete("music")
                  else
