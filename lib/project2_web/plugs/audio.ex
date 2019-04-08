@@ -21,7 +21,10 @@ defmodule Project2Web.Audio do
       |> to_string()
     #IO.inspect(data, printable_limit: :infinity)
     {:ok, x} = Base.decode64(data)
-    {:ok, file} = File.open("priv/static/song.mp3", [:write])
+		IO.puts "\n\n\n\n\n\n\ AAAAAAAaa\n\n\n\n\n"
+		inspect File.open("priv/static/song.mp3", [:write])
+		IO.puts "AAAAAFDFFFFF"
+    {:ok, file} = File.open("song.mp3", [:write])
     IO.binwrite(file, x)
     IO.inspect(x)
     #IO.puts "inspecting data"
@@ -29,7 +32,7 @@ defmodule Project2Web.Audio do
     conn = conn
     |> send_chunked(200)
 
-    File.stream!("priv/static/song.mp3", [], @chunk_size)
+    File.stream!("song.mp3", [], @chunk_size)
     |> Enum.into(conn)
   end
 end
