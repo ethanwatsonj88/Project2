@@ -39,6 +39,7 @@
 
 <%= render Project2Web.SongView, "index.html",
 			songs: @user.songs,
+			current_user: @current_user,
 			conn: @conn %>
 
 <%= for user <- @followers do %>
