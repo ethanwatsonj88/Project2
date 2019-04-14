@@ -9,7 +9,13 @@
     controls
     src=<%= Routes.audio_path(@conn, :song, %{id: @song.id}) %>
   </audio>
-
 </ul>
-
+<div id="chat_root">loading root</div>
 <span><%= link "Back", to: Routes.song_path(@conn, :index) %></span>
+
+<script>
+  window.songid = "<%= @song.id %>"
+  <%= if @current_user do %>
+    window.username = "<%= @current_user.username %>"
+  <% end %>
+</script>

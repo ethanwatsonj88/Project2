@@ -42,4 +42,5 @@ defmodule Project2Web.Router do
   end
 
   get "/listener/:name", PageController, :listener
+  get "/chat/:name", SongController, :chat
 end

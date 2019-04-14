@@ -32,4 +32,5 @@ defmodule Project2Web.UserSocket do
   def id(_socket), do: nil
 
   channel "listeners:*", Project2Web.ListenersChannel
+  channel "chat:*", Project2Web.ChatChannel
 end
