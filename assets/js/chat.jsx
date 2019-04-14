@@ -62,7 +62,8 @@ class Chat extends React.Component {
                    on_in={this.on_in.bind(this)}
                    sub={this.sub.bind(this)} />
       </div>
-      <div>
+      <h3 className="mb-2">Comments</h3>
+      <div className="pre-scrollable">
         <ViewComments msgs={this.state.msgs} names={this.state.names} />
       </div>
       </div>
